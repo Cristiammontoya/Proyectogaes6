@@ -1,0 +1,94 @@
+/* Estilos para la página de Contacto */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+    min-height: 100vh;
+}
+
+/* Estilos para el encabezado de contacto */
+.encabezado {
+    text-align: center;
+    padding: 20px;
+}
+
+.titulo-principal {
+    font-size: 2rem;
+    color: #c61212; /* Cambia el color del título según tu preferencia */
+    margin: 0;
+}
+
+.subtitulo {
+    font-size: 1.2rem;
+    color: #000000; /* Cambia el color del subtitulo según tu preferencia */
+    margin: 10px 0;
+}
+
+
+.contacto form {
+    text-align: left;
+    margin: 2rem 0;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 400px; /* Ajusta el ancho del formulario */
+    width: 100%; /* Asegura que el formulario ocupe el ancho máximo */
+    align-self: flex-end; /* Alinea el formulario a la derecha */
+}
+
+.contacto {
+    text-align: center;
+    margin: 2rem;
+}
+
+.contacto h2 {
+    color: #1E3B56;
+    font-size: 2rem;
+}
+
+.contacto p {
+    margin: 1rem 0;
+    font-size: 1.2rem;
+}
+
+.contacto form {
+    text-align: left;
+    margin: 2rem 0;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.contacto label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.contacto input[type="text"],
+.contacto input[type="email"],
+.contacto textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.contacto button[type="submit"] {
+    background-color: #1E3B56;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Agrega estilos adicionales según tus necesidades */

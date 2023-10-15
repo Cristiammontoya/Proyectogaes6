@@ -1,0 +1,96 @@
+/* Estilos para la página de Reservas */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+    min-height: 100vh;
+}
+
+.reservas {
+    text-align: center;
+    margin: 2rem;
+}
+
+.reservas h2 {
+    color: #1E3B56;
+    font-size: 2rem;
+}
+
+.reservas p {
+    margin: 1rem 0;
+    font-size: 1.2rem;
+}
+
+.reserva-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.reserva-container h3 {
+    color: #1E3B56;
+    font-size: 1.5rem;
+}
+
+.reserva-habitacion,
+.reserva-fechas,
+.reserva-info {
+    flex: 1;
+    margin: 0 1rem;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.reserva-habitacion label,
+.reserva-fechas label,
+.reserva-info label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.reserva-habitacion label input[type="radio"] {
+    margin-right: 0.5rem;
+}
+
+.reserva-fechas input[type="date"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.reserva-info input[type="text"],
+.reserva-info input[type="email"],
+.reserva-info input[type="tel"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.reservas button {
+    background-color: #1E3B56;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.mensaje-reserva {
+    margin-top: 1rem;
+    font-weight: bold;
+    color: #1E3B56;
+}
+
+/* Agrega estilos adicionales según tus necesidades */

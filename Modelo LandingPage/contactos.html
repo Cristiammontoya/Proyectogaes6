@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Hotel Catay</title>
+    <!-- Enlaces a estilos CSS y otras dependencias -->
+    
+    <link rel="stylesheet" href="css/contactanos.css">
+</head>
+<body>
+    <!-- Encabezado y barra de navegación (puedes reutilizar el código del index.html) -->
+    <header class="encabezado">
+        <h1 class="titulo-principal">¡Contáctanos!</h1>
+        <p class="subtitulo">¿Tienes alguna pregunta o comentario? No dudes en ponerte en contacto con nosotros:</p>
+    </header>
+    
+
+    <main>
+        <section class="contenedor contacto">
+            <form action="procesar_contacto.php" method="post">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="correo">Correo Electrónico:</label>
+                <input type="email" id="correo" name="correo" required>
+
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
+</body>
+<footer>
+       
+    <div class="contenedor-footer">
+        <div class="content-foo">
+            <h4>Teléfono</h4>
+            <p>123-456-789</p>
+        </div>
+        <div class="content-foo">
+            <h4>Email</h4>
+            <p>hotelCatay@gmail.com</p>
+        </div>
+        <div class="content-foo">
+            <h4>Dirección</h4>
+            <p>Calle Principal #123, Ciudad</p>
+        </div>
+    </div>
+    <h2 class="titulo-final">&copy; Derechos de Autor 2023 | Hotel Catay</h2>
+</footer>
+</html>

@@ -53,14 +53,14 @@ input[type="number"]
 	width: 100%;
 	color: white;
 	font-size: 20px;
-	background: #397405;
+	background: #f48b8b;
 	padding: a5px 20px;
 	border-radius: 5px;
 	cursor: pointer;
 }
 
 .button:hover{
-	background: #6aaf2d;
+	background: hsl(0, 0%, 99%);
 }
 
 p{
@@ -68,12 +68,12 @@ p{
 }
 
 .link:hover{
-	color: #397405;
+	color: #0400ff;
 }
 
 .link{
 	text-decoration: none;
-	color: #142902;
+	color: #0400ff;
 	font-size: 600;
 
 }
@@ -85,6 +85,6 @@ p{
 		width: 500px;
 		margin-top: 120px;
 		border-radius: 3%;
-		background-color: #9aea54;
+		background-color: hsl(0, 87%, 57%);
 	}
 }
