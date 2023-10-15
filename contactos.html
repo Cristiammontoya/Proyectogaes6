@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Hotel Catay</title>
+    <!-- Enlaces a estilos CSS y otras dependencias -->
+    
+    <link rel="stylesheet" href="css/contactanos.css">
+</head>
+<body>
+    <!-- Encabezado y barra de navegación (puedes reutilizar el código del index.html) -->
+    <header class="encabezado">
+        <h1 class="titulo-principal">¡Contáctanos!</h1>
+        <p class="subtitulo">¿Tienes alguna pregunta o comentario? No dudes en ponerte en contacto con nosotros:</p>
+    </header>
+    <main>
+        <section class="contenedor contacto">
+            <div class="contenedor">
+                <form class="formulario">
+                    <form action="procesar_contacto.php" method="post">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" required>
+        
+                        <label for="correo">Correo Electrónico:</label>
+                        <input type="email" id="correo" name="correo" required>
+        
+                        <label for="mensaje">Mensaje:</label>
+                        <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+        
+                        <button type="submit">Enviar</button>
+                    </form>
+                </form>
+                <div id="map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1406.3491178694374!2d-74.636057113274!3d4.456389709863672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f3db44007a421%3A0x51773b95f77f1e75!2sHotel%20El%20Catay!5e0!3m2!1sen!2sco!4v1697394530866!5m2!1sen!2sco" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+<footer>       
+    <div class="contenedor-footer">
+        <div class="content-foo">
+            <h4>Teléfono</h4>
+            <p>123-456-789</p>
+        </div>
+        <div class="content-foo">
+            <h4>Email</h4>
+            <p>hotelCatay@gmail.com</p>
+        </div>
+        <div class="content-foo">
+            <h4>Dirección</h4>
+            <p>Calle Principal #123, Ciudad</p>
+        </div>
+    </div>
+    <h2 class="titulo-final">&copy; Derechos de Autor 2023 | Hotel Catay</h2>
+</footer>
+</html>
