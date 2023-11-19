@@ -11,7 +11,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema staypro
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `staypro` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+CREATE SCHEMA IF NOT EXISTS `staypro`;
 USE `staypro` ;
 
 -- -----------------------------------------------------
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `staypro`.`rol` (
   PRIMARY KEY (`idRol`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+;
 
 
 -- -----------------------------------------------------
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `staypro`.`persona` (
   PRIMARY KEY (`Ndocumento`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+;
 
 
 -- -----------------------------------------------------
@@ -52,18 +52,18 @@ CREATE TABLE IF NOT EXISTS `staypro`.`usuario` (
   `persona_Ndocumento` INT(11) NOT NULL,
   `Rol_idRol` INT(11) NOT NULL,
   PRIMARY KEY (`UsuarioID`),
-  INDEX `fk_usuario_persona1_idx` (`persona_Ndocumento` ASC) VISIBLE,
-  INDEX `fk_usuario_Rol1_idx` (`Rol_idRol` ASC) VISIBLE,
-  CONSTRAINT `fk_usuario_Rol1`
-    FOREIGN KEY (`Rol_idRol`)
-    REFERENCES `staypro`.`rol` (`idRol`),
+  INDEX `fk_usuario_persona1_idx` (`persona_Ndocumento` ASC) ,
+  INDEX `fk_usuario_rol1_idx` (`rol_idRol` ASC) ,
+  CONSTRAINT `fk_usuario_rol1`
+  FOREIGN KEY (`rol_idRol`)
+  REFERENCES `staypro`.`rol` (`idRol`)
+  ON DELETE RESTRICT
+  ON UPDATE RESTRICT,
   CONSTRAINT `fk_usuario_persona1`
-    FOREIGN KEY (`persona_Ndocumento`)
-    REFERENCES `staypro`.`persona` (`Ndocumento`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 15
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+  FOREIGN KEY (`persona_Ndocumento`)
+  REFERENCES `staypro`.`persona` (`Ndocumento`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARACTER SET=utf8mb4;
+
 
 
 -- -----------------------------------------------------
@@ -73,13 +73,13 @@ CREATE TABLE IF NOT EXISTS `staypro`.`administrador` (
   `AdministradorID` INT(11) NOT NULL AUTO_INCREMENT,
   `UsuarioID` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`AdministradorID`),
-  UNIQUE INDEX `UsuarioID` (`UsuarioID` ASC) VISIBLE,
+  UNIQUE INDEX `UsuarioID` (`UsuarioID` ASC) ,
   CONSTRAINT `administrador_ibfk_1`
     FOREIGN KEY (`UsuarioID`)
     REFERENCES `staypro`.`usuario` (`UsuarioID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+;
 
 
 -- -----------------------------------------------------
@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `staypro`.`cargo` (
   PRIMARY KEY (`idcargo`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+;
 
 
 -- -----------------------------------------------------
@@ -102,13 +102,13 @@ CREATE TABLE IF NOT EXISTS `staypro`.`cliente` (
   `ClienteID` INT(11) NOT NULL AUTO_INCREMENT,
   `UsuarioID` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`ClienteID`),
-  UNIQUE INDEX `UsuarioID` (`UsuarioID` ASC) VISIBLE,
+  UNIQUE INDEX `UsuarioID` (`UsuarioID` ASC),
   CONSTRAINT `cliente_ibfk_1`
     FOREIGN KEY (`UsuarioID`)
     REFERENCES `staypro`.`usuario` (`UsuarioID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+;
 
 
 -- -----------------------------------------------------
@@ -125,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `staypro`.`promociones` (
   PRIMARY KEY (`numpromocion`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+;
 
 
 -- -----------------------------------------------------
@@ -135,8 +135,8 @@ CREATE TABLE IF NOT EXISTS `staypro`.`cliente_has_promociones` (
   `cliente_ClienteID` INT(11) NOT NULL,
   `promociones_numpromocion` INT(11) NOT NULL,
   PRIMARY KEY (`cliente_ClienteID`, `promociones_numpromocion`),
-  INDEX `fk_cliente_has_promociones_promociones1_idx` (`promociones_numpromocion` ASC) VISIBLE,
-  INDEX `fk_cliente_has_promociones_cliente1_idx` (`cliente_ClienteID` ASC) VISIBLE,
+  INDEX `fk_cliente_has_promociones_promociones1_idx` (`promociones_numpromocion` ASC) ,
+  INDEX `fk_cliente_has_promociones_cliente1_idx` (`cliente_ClienteID` ASC) ,
   CONSTRAINT `fk_cliente_has_promociones_cliente1`
     FOREIGN KEY (`cliente_ClienteID`)
     REFERENCES `staypro`.`cliente` (`ClienteID`),
@@ -145,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `staypro`.`cliente_has_promociones` (
     REFERENCES `staypro`.`promociones` (`numpromocion`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+;
 
 
 -- -----------------------------------------------------
@@ -160,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `staypro`.`tipo_habitacion` (
   PRIMARY KEY (`idtipo_habitacion`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+;
 
 
 -- -----------------------------------------------------
@@ -171,14 +171,14 @@ CREATE TABLE IF NOT EXISTS `staypro`.`habitaciones` (
   `Estado` VARCHAR(50) NULL DEFAULT NULL,
   `tipo_habitacion_idtipo_habitacion1` INT(11) NOT NULL,
   PRIMARY KEY (`numhabitacion`),
-  INDEX `fk_habitaciones_tipo_habitacion1_idx` (`tipo_habitacion_idtipo_habitacion1` ASC) VISIBLE,
+  INDEX `fk_habitaciones_tipo_habitacion1_idx` (`tipo_habitacion_idtipo_habitacion1` ASC) ,
   CONSTRAINT `fk_habitaciones_tipo_habitacion1`
     FOREIGN KEY (`tipo_habitacion_idtipo_habitacion1`)
     REFERENCES `staypro`.`tipo_habitacion` (`idtipo_habitacion`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 8
 DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+;
 
 
 -- -----------------------------------------------------
@@ -191,13 +191,13 @@ CREATE TABLE IF NOT EXISTS `staypro`.`reservas` (
   `FechaSalida` DATE NULL DEFAULT NULL,
   `EstadoReserva` VARCHAR(50) NULL DEFAULT NULL,
   PRIMARY KEY (`ReservaID`),
-  INDEX `ClienteID` (`ClienteID` ASC) VISIBLE,
+  INDEX `ClienteID` (`ClienteID` ASC) ,
   CONSTRAINT `reservas_ibfk_1`
     FOREIGN KEY (`ClienteID`)
     REFERENCES `staypro`.`cliente` (`ClienteID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+;
 
 
 -- -----------------------------------------------------
@@ -208,8 +208,8 @@ CREATE TABLE IF NOT EXISTS `staypro`.`detalles_reserva` (
   `habitaciones_numhabitacion` INT(11) NOT NULL,
   `habitaciones_tipo_habitacion_idtipo_habitacion` INT(11) NOT NULL,
   PRIMARY KEY (`reservas_ReservaID`, `habitaciones_numhabitacion`, `habitaciones_tipo_habitacion_idtipo_habitacion`),
-  INDEX `fk_reservas_has_habitaciones_habitaciones1_idx` (`habitaciones_numhabitacion` ASC, `habitaciones_tipo_habitacion_idtipo_habitacion` ASC) VISIBLE,
-  INDEX `fk_reservas_has_habitaciones_reservas1_idx` (`reservas_ReservaID` ASC) VISIBLE,
+  INDEX `fk_reservas_has_habitaciones_habitaciones1_idx` (`habitaciones_numhabitacion` ASC, `habitaciones_tipo_habitacion_idtipo_habitacion` ASC) ,
+  INDEX `fk_reservas_has_habitaciones_reservas1_idx` (`reservas_ReservaID` ASC) ,
   CONSTRAINT `fk_reservas_has_habitaciones_habitaciones1`
     FOREIGN KEY (`habitaciones_numhabitacion`)
     REFERENCES `staypro`.`habitaciones` (`numhabitacion`),
@@ -218,7 +218,7 @@ CREATE TABLE IF NOT EXISTS `staypro`.`detalles_reserva` (
     REFERENCES `staypro`.`reservas` (`ReservaID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+;
 
 
 -- -----------------------------------------------------
@@ -229,8 +229,8 @@ CREATE TABLE IF NOT EXISTS `staypro`.`empleado` (
   `UsuarioID` INT(11) NULL DEFAULT NULL,
   `cargo_idcargo` INT(11) NOT NULL,
   PRIMARY KEY (`EmpleadoID`),
-  UNIQUE INDEX `UsuarioID` (`UsuarioID` ASC) VISIBLE,
-  INDEX `fk_empleado_cargo1_idx` (`cargo_idcargo` ASC) VISIBLE,
+  UNIQUE INDEX `UsuarioID` (`UsuarioID` ASC) ,
+  INDEX `fk_empleado_cargo1_idx` (`cargo_idcargo` ASC) ,
   CONSTRAINT `empleado_ibfk_1`
     FOREIGN KEY (`UsuarioID`)
     REFERENCES `staypro`.`usuario` (`UsuarioID`),
@@ -239,7 +239,7 @@ CREATE TABLE IF NOT EXISTS `staypro`.`empleado` (
     REFERENCES `staypro`.`cargo` (`idcargo`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+;
 
 
 -- -----------------------------------------------------
@@ -252,7 +252,7 @@ CREATE TABLE IF NOT EXISTS `staypro`.`permisos` (
   PRIMARY KEY (`idpermisos`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+;
 
 
 -- -----------------------------------------------------
@@ -265,7 +265,7 @@ CREATE TABLE IF NOT EXISTS `staypro`.`tipo_pqrs` (
   PRIMARY KEY (`idtipo_pqrs`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+;
 
 
 -- -----------------------------------------------------
@@ -278,8 +278,8 @@ CREATE TABLE IF NOT EXISTS `staypro`.`pqrs` (
   `usuario_UsuarioID` INT(11) NOT NULL,
   `tipo_pqrs_idtipo_pqrs` INT(11) NOT NULL,
   PRIMARY KEY (`numcaso`),
-  INDEX `fk_pqrs_usuario1_idx` (`usuario_UsuarioID` ASC) VISIBLE,
-  INDEX `fk_pqrs_tipo_pqrs1_idx` (`tipo_pqrs_idtipo_pqrs` ASC) VISIBLE,
+  INDEX `fk_pqrs_usuario1_idx` (`usuario_UsuarioID` ASC) ,
+  INDEX `fk_pqrs_tipo_pqrs1_idx` (`tipo_pqrs_idtipo_pqrs` ASC) ,
   CONSTRAINT `fk_pqrs_tipo_pqrs1`
     FOREIGN KEY (`tipo_pqrs_idtipo_pqrs`)
     REFERENCES `staypro`.`tipo_pqrs` (`idtipo_pqrs`),
@@ -288,7 +288,7 @@ CREATE TABLE IF NOT EXISTS `staypro`.`pqrs` (
     REFERENCES `staypro`.`usuario` (`UsuarioID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+;
 
 
 -- -----------------------------------------------------
@@ -298,8 +298,8 @@ CREATE TABLE IF NOT EXISTS `staypro`.`rol_has_permisos` (
   `Rol_idRol` INT(11) NOT NULL,
   `permisos_idpermisos` INT(11) NOT NULL,
   PRIMARY KEY (`Rol_idRol`, `permisos_idpermisos`),
-  INDEX `fk_Rol_has_permisos_permisos1_idx` (`permisos_idpermisos` ASC) VISIBLE,
-  INDEX `fk_Rol_has_permisos_Rol_idx` (`Rol_idRol` ASC) VISIBLE,
+  INDEX `fk_Rol_has_permisos_permisos1_idx` (`permisos_idpermisos` ASC) ,
+  INDEX `fk_Rol_has_permisos_Rol_idx` (`Rol_idRol` ASC) ,
   CONSTRAINT `fk_Rol_has_permisos_Rol`
     FOREIGN KEY (`Rol_idRol`)
     REFERENCES `staypro`.`rol` (`idRol`),
@@ -308,7 +308,7 @@ CREATE TABLE IF NOT EXISTS `staypro`.`rol_has_permisos` (
     REFERENCES `staypro`.`permisos` (`idpermisos`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+;
 
 
 -- -----------------------------------------------------
@@ -331,7 +331,7 @@ CREATE TABLE IF NOT EXISTS `staypro`.`encuestaSatisfaccion` (
   `comentarios` VARCHAR(255) NULL,
   `cliente_ClienteID` INT(11) NOT NULL,
   PRIMARY KEY (`idencuestaSatisfaccion`),
-  INDEX `fk_encuestaSatisfaccion_cliente_idx` (`cliente_ClienteID` ASC) VISIBLE,
+  INDEX `fk_encuestaSatisfaccion_cliente_idx` (`cliente_ClienteID` ASC) ,
   CONSTRAINT `fk_encuestaSatisfaccion_cliente`
     FOREIGN KEY (`cliente_ClienteID`)
     REFERENCES `staypro`.`cliente` (`ClienteID`)
@@ -391,8 +391,8 @@ CREATE TABLE IF NOT EXISTS `staypro`.`productos` (
   `provedores_NIT1` INT NOT NULL,
   `categorias_idcategorias1` INT NOT NULL,
   PRIMARY KEY (`codigoProducto`),
-  INDEX `fk_productos_provedores1_idx` (`provedores_NIT1` ASC) VISIBLE,
-  INDEX `fk_productos_categorias1_idx` (`categorias_idcategorias1` ASC) VISIBLE,
+  INDEX `fk_productos_provedores1_idx` (`provedores_NIT1` ASC) ,
+  INDEX `fk_productos_categorias1_idx` (`categorias_idcategorias1` ASC),
   CONSTRAINT `fk_productos_provedores1`
     FOREIGN KEY (`provedores_NIT1`)
     REFERENCES `staypro`.`provedores` (`NIT`)
@@ -419,9 +419,9 @@ CREATE TABLE IF NOT EXISTS `staypro`.`inventario` (
   `salidas_idsalidas1` INT NOT NULL,
   `productos_codigoProducto1` VARCHAR(10) NOT NULL,
   PRIMARY KEY (`idinventario`),
-  INDEX `fk_inventario_entradas1_idx` (`entradas_identradas1` ASC) VISIBLE,
-  INDEX `fk_inventario_salidas1_idx` (`salidas_idsalidas1` ASC) VISIBLE,
-  INDEX `fk_inventario_productos1_idx` (`productos_codigoProducto1` ASC) VISIBLE,
+  INDEX `fk_inventario_entradas1_idx` (`entradas_identradas1` ASC) ,
+  INDEX `fk_inventario_salidas1_idx` (`salidas_idsalidas1` ASC) ,
+  INDEX `fk_inventario_productos1_idx` (`productos_codigoProducto1` ASC) ,
   CONSTRAINT `fk_inventario_entradas1`
     FOREIGN KEY (`entradas_identradas1`)
     REFERENCES `staypro`.`entradas` (`identradas`)
